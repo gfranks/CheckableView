@@ -11,6 +11,13 @@
         <attr name="normalBackgroundColor" format="reference|color" />
         <attr name="checkedBackgroundColor" format="reference|color" />
         <attr name="animationDuration" format="integer" />
+        <attr name="checkmarkColor" format="reference|color" />
+        <attr name="checkmarkPosition" format="enum">
+            <enum name="topLeft" value="0" />
+            <enum name="topRight" value="1" />
+            <enum name="bottomLeft" value="2" />
+            <enum name="bottomRight" value="3" />
+        </attr>
         <attr name="isChecked" format="boolean" />
     </declare-styleable>
 </resources>

@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">CheckableViewSample</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="default_checkable_view_style">Default Style</string>
+    <string name="custom_checkable_view_style">Custom Checked Icon Color</string>
+    <string name="checkable_view_samples">CheckableView Samples</string>
+    <string name="checkable_group_sample_1">CheckableGroup Sample 1</string>
+    <string name="checkable_group_sample_2">CheckableGroup Sample 2</string>
 </resources>

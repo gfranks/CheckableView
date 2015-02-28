@@ -10,17 +10,20 @@ What It Looks Like:
 
 See a short video of this control here:
 
+[![Sample Video](http://img.youtube.com/vi/xxgrGE3fzv4/0.jpg)](https://www.youtube.com/watch?v=xxgrGE3fzv4)
+
 
 ### Screen Shots
+
+![Examples](/resources/screenshot1.png?raw=true) ![Examples](/resources/screenshot2.png?raw=true)
 
 
 How To Use It:
 -------------
 
-### Basic Example
+### Basic CheckableView Example
 
 ```java
-
 // CheckableView Sample.
 // See Sample Module for additional customization as well as multiple examples.
 
@@ -39,6 +42,50 @@ How To Use It:
      app:isChecked="true" />
 ```
 
+### Basic CheckableGroup Example
+
+Want to have a group of CheckableViews? Use a CheckableGroup! CheckableGroup allows only a single CheckableView to be checked and will handle the states of the other CheckableViews
+NOTE: CheckableGroup has it's own OnCheckedChangeListener you may set to receive checked state changes for it's CheckableViews
+
+```java
+
+// To retrieve the current checked CheckableView or it's position, you may call
+// getCheckedCheckableViewPosition() or getCheckedCheckableView() on the CheckableGroup object instance
+
+ <com.github.gfranks.checkable.view.CheckableGroup
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+     <com.github.gfranks.checkable.view.CheckableView
+          android:id="@+id/checkable_view_1"
+          android:layout_width="125dp"
+          android:layout_height="100dp"
+          app:checkedImage="@drawable/checked_image"
+          app:checkedColor="@color/blue"
+          app:normalImage="@drawable/normal_image"
+          app:normalColor="@color/gray_light"
+          app:borderColor="@color/gray"
+          app:borderWidth="3"
+          app:normalBackgroundColor="@color/gray"
+          app:checkedBackgroundColor="@color/white"
+          app:isChecked="true" />
+
+     <com.github.gfranks.checkable.view.CheckableView
+          android:id="@+id/checkable_view_2"
+          android:layout_width="125dp"
+          android:layout_height="100dp"
+          app:checkedImage="@drawable/checked_image"
+          app:checkedColor="@color/blue"
+          app:normalImage="@drawable/normal_image"
+          app:normalColor="@color/gray_light"
+          app:borderColor="@color/gray"
+          app:borderWidth="3"
+          app:normalBackgroundColor="@color/gray"
+          app:checkedBackgroundColor="@color/white" />
+
+ </com.github.gfranks.checkable.view.CheckableGroup>
+```
+
 
 Customization:
 ----------------
@@ -52,19 +99,14 @@ Customization:
 * `normalBackgroundColor` Color used as the background when the state is unchecked
 * `checkedBackgroundColor` Color used as the background when the state is checked
 * `animationDuration` Duration used for all animation
+* `checkmarkColor` Color of the checkmark used in the checked overlay
+* `checkmarkPosition` Enum (CheckPosition) to determine where the checkmark is to be drawn (Defaults to topRight)
 * `isChecked` The checked state of the CheckableView
-
 
 Callback Methods:
 ----------------
-// OnCheckedChangeListener
- /**
-  * Called when the checked state of a CheckableView has changed.
-  *
-  * @param checkableView The CheckableView view whose state has changed.
-  * @param isChecked  The new checked state of CheckableView.
-  */
- void onCheckedChanged(CheckableView checkableView, boolean isChecked);
+###OnCheckedChangeListener
+`void onCheckedChanged(CheckableView checkableView, boolean isChecked);`
 
 Installation:
 ------------

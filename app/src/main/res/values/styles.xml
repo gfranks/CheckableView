@@ -3,12 +3,12 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="android:colorPrimary">@color/theme_gray_light</item>
-        <item name="android:colorPrimaryDark">@color/theme_gray</item>
-        <item name="android:windowBackground">@color/theme_white</item>
+        <item name="android:colorPrimary">@color/cv_gray_light</item>
+        <item name="android:colorPrimaryDark">@color/cv_gray</item>
+        <item name="android:windowBackground">@color/cv_white</item>
 
-        <item name="colorPrimary">@color/theme_gray_light</item>
-        <item name="colorPrimaryDark">@color/theme_gray</item>
+        <item name="colorPrimary">@color/cv_gray_light</item>
+        <item name="colorPrimaryDark">@color/cv_gray</item>
     </style>
 
 </resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_blue">#4787F3</color>
+    <color name="theme_magenta">#F33274</color>
+    <color name="theme_orange">#F99640</color>
+    <color name="theme_purple">#8755ff</color>
+    <color name="theme_red">#D71720</color>
+    <color name="theme_yellow">#FED430</color>
+    <color name="theme_white">#F8F8F2</color>
+</resources>

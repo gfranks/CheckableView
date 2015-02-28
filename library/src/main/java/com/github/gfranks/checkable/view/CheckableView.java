@@ -15,6 +15,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnticipateInterpolator;
@@ -26,6 +27,13 @@ import android.widget.ImageView;
 public class CheckableView extends FrameLayout implements View.OnClickListener {
 
     private static final int DEFAULT_ANIMATION_DURATION = 300;
+
+    public enum CheckPosition {
+        TOP_LEFT,
+        TOP_RIGHT,
+        BOTTOM_LEFT,
+        BOTTOM_RIGHT
+    }
 
     /**
      * The checked state of the CheckableView
@@ -64,6 +72,14 @@ public class CheckableView extends FrameLayout implements View.OnClickListener {
      */
     private View mCheckedOverlay;
     /**
+     * Color of checkmark used in checked overlay
+     */
+    private int mCheckedmarkColor;
+    /**
+     * Position of the checkable overlay
+     */
+    private CheckPosition mCheckmarkPosition;
+    /**
      * Color used as the border color of the CheckableView
      */
     private int mBorderColor;
@@ -98,6 +114,7 @@ public class CheckableView extends FrameLayout implements View.OnClickListener {
     public CheckableView(Context context) {
         super(context);
         super.setOnClickListener(this);
+        setTag(getClass().getName());
         mAnimationDuration = DEFAULT_ANIMATION_DURATION;
         init();
     }
@@ -111,17 +128,19 @@ public class CheckableView extends FrameLayout implements View.OnClickListener {
         super.setOnClickListener(this);
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.CheckableView, defStyleAttr, 0);
-        mIsChecked = a.getBoolean(R.styleable.CheckableView_isChecked, false);
         mCheckedImageResId = a.getResourceId(R.styleable.CheckableView_checkedImage, -1);
         mNormalImageResId = a.getResourceId(R.styleable.CheckableView_normalImage, -1);
-        mCheckedImageColor = a.getColor(R.styleable.CheckableView_checkedColor, context.getResources().getColor(R.color.theme_gray_light));
-        mNormalImageColor = a.getColor(R.styleable.CheckableView_normalColor, context.getResources().getColor(R.color.theme_gray_lightest));
-        mBorderColor = a.getColor(R.styleable.CheckableView_borderColor, context.getResources().getColor(R.color.theme_gray_light));
-        mBorderWidth = a.getInt(R.styleable.CheckableView_borderWidth, 5);
+        mCheckedImageColor = a.getColor(R.styleable.CheckableView_checkedColor, context.getResources().getColor(R.color.cv_gray));
+        mNormalImageColor = a.getColor(R.styleable.CheckableView_normalColor, context.getResources().getColor(R.color.cv_gray_lightest));
+        mBorderColor = a.getColor(R.styleable.CheckableView_borderColor, context.getResources().getColor(R.color.cv_gray_super_light));
+        mBorderWidth = a.getInt(R.styleable.CheckableView_borderWidth, 4);
         mBorderRadius = a.getFloat(R.styleable.CheckableView_borderRadius, 12);
-        mNormalBackgroundColor = a.getColor(R.styleable.CheckableView_normalBackgroundColor, context.getResources().getColor(R.color.theme_gray_super_light));
-        mCheckedBackgroundColor = a.getColor(R.styleable.CheckableView_checkedBackgroundColor, context.getResources().getColor(R.color.theme_white));
+        mNormalBackgroundColor = a.getColor(R.styleable.CheckableView_normalBackgroundColor, context.getResources().getColor(R.color.cv_gray_super_light));
+        mCheckedBackgroundColor = a.getColor(R.styleable.CheckableView_checkedBackgroundColor, context.getResources().getColor(R.color.cv_white));
         mAnimationDuration = a.getInt(R.styleable.CheckableView_animationDuration, DEFAULT_ANIMATION_DURATION);
+        mCheckedmarkColor = a.getColor(R.styleable.CheckableView_checkmarkColor, context.getResources().getColor(R.color.cv_green));
+        mCheckmarkPosition = CheckPosition.values()[a.getInt(R.styleable.CheckableView_checkmarkPosition, CheckPosition.TOP_RIGHT.ordinal())];
+        mIsChecked = a.getBoolean(R.styleable.CheckableView_isChecked, false);
         a.recycle();
 
         init();
@@ -217,7 +236,7 @@ public class CheckableView extends FrameLayout implements View.OnClickListener {
      */
     public void setBorderColor(int borderColor) {
         mBorderColor = borderColor;
-        initBackgrounds();
+        initImageContainerBackground();
     }
 
     /**
@@ -235,7 +254,7 @@ public class CheckableView extends FrameLayout implements View.OnClickListener {
      */
     public void setBorderWidth(int borderWidth) {
         mBorderWidth = borderWidth;
-        initBackgrounds();
+        initImageContainerBackground();
     }
 
     /**
@@ -270,7 +289,7 @@ public class CheckableView extends FrameLayout implements View.OnClickListener {
      */
     public void setNormalBackgroundColor(int normalBackgroundColor) {
         mNormalBackgroundColor = normalBackgroundColor;
-        initBackgrounds();
+        initImageContainerBackground();
     }
 
     /**
@@ -288,12 +307,13 @@ public class CheckableView extends FrameLayout implements View.OnClickListener {
      */
     public void setCheckedBackgroundColor(int checkedBackgroundColor) {
         mCheckedBackgroundColor = checkedBackgroundColor;
-        initBackgrounds();
+        initImageContainerBackground();
     }
 
     /**
      *
      * @return Duration used for all animation
+     * @see #setAnimationDuration(int)
      */
     public int getAnimationDuration() {
         return mAnimationDuration;
@@ -305,6 +325,43 @@ public class CheckableView extends FrameLayout implements View.OnClickListener {
      */
     public void setAnimationDuration(int animationDuration) {
         mAnimationDuration = animationDuration;
+    }
+
+    /**
+     *
+     * @return Color used to color the checkmark in the checked overlay
+     * @see #setCheckedmarkColor(int)
+     */
+    public int getCheckedmarkColor() {
+        return mCheckedmarkColor;
+    }
+
+    /**
+     *
+     * @param checkedmarkColor Color to be used to color the checkmark in the checked overlay
+     */
+    public void setCheckedmarkColor(int checkedmarkColor) {
+        mCheckedmarkColor = checkedmarkColor;
+        initCheckableOverlayBackground();
+    }
+
+    /**
+     *
+     * @return CheckPosition enum for the position of the checkmark
+     * @see #setCheckmarkPosition(com.github.gfranks.checkable.view.CheckableView.CheckPosition)
+     */
+    public CheckPosition getCheckmarkPosition() {
+        return mCheckmarkPosition;
+    }
+
+    /**
+     *
+     * @param checkmarkPosition CheckPosition enum to determine where the checkmark should be drawn
+     * @see com.github.gfranks.checkable.view.CheckableView.CheckPosition
+     */
+    public void setCheckmarkPosition(CheckPosition checkmarkPosition) {
+        mCheckmarkPosition = checkmarkPosition;
+        initCheckableOverlayPosition();
     }
 
     /**
@@ -407,6 +464,12 @@ public class CheckableView extends FrameLayout implements View.OnClickListener {
     }
 
     private void initBackgrounds() {
+        initImageContainerBackground();
+        initCheckableOverlayBackground();
+        initCheckableOverlayPosition();
+    }
+
+    private void initImageContainerBackground() {
         GradientDrawable normalBackground = (GradientDrawable) getResources().getDrawable(R.drawable.bg_checkable_view);
         normalBackground.setColor(getNormalBackgroundColor());
         normalBackground.setStroke(getBorderWidth(), getBorderColor());
@@ -422,14 +485,38 @@ public class CheckableView extends FrameLayout implements View.OnClickListener {
         } else {
             mImageViewContainer.setBackgroundDrawable(transitionDrawable);
         }
+    }
 
+    private void initCheckableOverlayBackground() {
         LayerDrawable checkedOverlayBackground = (LayerDrawable) getResources().getDrawable(R.drawable.bg_checked_overlay);
         ((GradientDrawable) checkedOverlayBackground.getDrawable(0)).setColor(getCheckedBackgroundColor());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            checkedOverlayBackground.getDrawable(1).setTint(getCheckedmarkColor());
+        } else {
+            checkedOverlayBackground.getDrawable(1).mutate().setColorFilter(getCheckedmarkColor(), PorterDuff.Mode.SRC_IN);
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
             mCheckedOverlay.setBackground(checkedOverlayBackground);
         } else {
             mCheckedOverlay.setBackgroundDrawable(checkedOverlayBackground);
+        }
+    }
+
+    private void initCheckableOverlayPosition() {
+        switch (getCheckmarkPosition()) {
+            case TOP_LEFT:
+                ((LayoutParams) mCheckedOverlay.getLayoutParams()).gravity = Gravity.TOP|Gravity.START;
+                break;
+            case TOP_RIGHT:
+                ((LayoutParams) mCheckedOverlay.getLayoutParams()).gravity = Gravity.TOP|Gravity.END;
+                break;
+            case BOTTOM_LEFT:
+                ((LayoutParams) mCheckedOverlay.getLayoutParams()).gravity = Gravity.BOTTOM|Gravity.START;
+                break;
+            case BOTTOM_RIGHT:
+                ((LayoutParams) mCheckedOverlay.getLayoutParams()).gravity = Gravity.BOTTOM|Gravity.END;
+                break;
         }
     }
 
