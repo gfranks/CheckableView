@@ -1,0 +1,116 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/layout_toolbar" />
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:columnCount="2">
+
+        <com.github.gfranks.checkable.view.CheckableView
+            android:id="@+id/checkable_view"
+            android:layout_width="125dp"
+            android:layout_height="100dp"
+            android:layout_gravity="start"
+            android:layout_margin="10dp"
+            app:checkedImage="@drawable/ic_task"
+            app:checkedColor="@color/theme_blue"
+            app:normalImage="@drawable/ic_task"
+            app:normalColor="@color/theme_gray_lightest"
+            app:borderColor="@color/theme_gray_super_light"
+            app:borderWidth="3"
+            app:normalBackgroundColor="@color/theme_gray_super_light"
+            app:checkedBackgroundColor="@color/theme_white"
+            app:isChecked="true" />
+
+        <com.github.gfranks.checkable.view.CheckableView
+            android:id="@+id/checkable_view_2"
+            android:layout_width="125dp"
+            android:layout_height="100dp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            app:checkedImage="@drawable/ic_task"
+            app:checkedColor="@color/theme_orange"
+            app:normalImage="@drawable/ic_task"
+            app:normalColor="@color/theme_white"
+            app:borderColor="@color/theme_orange"
+            app:borderWidth="4"
+            app:normalBackgroundColor="@color/theme_orange"
+            app:checkedBackgroundColor="@color/theme_white"
+            app:isChecked="false" />
+
+        <com.github.gfranks.checkable.view.CheckableView
+            android:id="@+id/checkable_view_3"
+            android:layout_width="125dp"
+            android:layout_height="100dp"
+            android:layout_gravity="start"
+            android:layout_margin="10dp"
+            app:checkedImage="@drawable/ic_task"
+            app:checkedColor="@color/theme_gray_light"
+            app:normalImage="@drawable/ic_task"
+            app:normalColor="@color/theme_white"
+            app:borderColor="@color/theme_gray_light"
+            app:borderWidth="5"
+            app:normalBackgroundColor="@color/theme_gray_light"
+            app:checkedBackgroundColor="@color/theme_white"
+            app:isChecked="false" />
+
+        <com.github.gfranks.checkable.view.CheckableView
+            android:id="@+id/checkable_view_4"
+            android:layout_width="125dp"
+            android:layout_height="100dp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            app:checkedImage="@drawable/ic_task"
+            app:checkedColor="@color/theme_red"
+            app:normalImage="@drawable/ic_task"
+            app:normalColor="@color/theme_white"
+            app:borderColor="@color/theme_red"
+            app:borderWidth="6"
+            app:normalBackgroundColor="@color/theme_red"
+            app:checkedBackgroundColor="@color/theme_white"
+            app:isChecked="true" />
+
+        <com.github.gfranks.checkable.view.CheckableView
+            android:id="@+id/checkable_view_5"
+            android:layout_width="125dp"
+            android:layout_height="100dp"
+            android:layout_gravity="start"
+            android:layout_margin="10dp"
+            app:checkedImage="@drawable/ic_task"
+            app:checkedColor="@color/theme_magenta"
+            app:normalImage="@drawable/ic_task"
+            app:normalColor="@color/theme_white"
+            app:borderColor="@color/theme_magenta"
+            app:borderWidth="5"
+            app:normalBackgroundColor="@color/theme_magenta"
+            app:checkedBackgroundColor="@color/theme_white"
+            app:isChecked="true" />
+
+        <com.github.gfranks.checkable.view.CheckableView
+            android:id="@+id/checkable_view_6"
+            android:layout_width="125dp"
+            android:layout_height="100dp"
+            android:layout_gravity="end"
+            android:layout_margin="10dp"
+            app:checkedImage="@drawable/ic_task"
+            app:checkedColor="@color/theme_blue"
+            app:normalImage="@drawable/ic_task"
+            app:normalColor="@color/theme_white"
+            app:borderColor="@color/theme_blue"
+            app:borderWidth="5"
+            app:normalBackgroundColor="@color/theme_blue"
+            app:checkedBackgroundColor="@color/theme_white"
+            app:isChecked="true" />
+
+    </GridLayout>
+
+</LinearLayout>

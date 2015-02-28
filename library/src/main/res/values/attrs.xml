@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CheckableView">
+        <attr name="checkedImage" format="reference" />
+        <attr name="normalImage" format="reference" />
+        <attr name="checkedColor" format="reference|color" />
+        <attr name="normalColor" format="reference|color" />
+        <attr name="borderColor" format="reference|color" />
+        <attr name="borderWidth" format="integer" />
+        <attr name="borderRadius" format="float" />
+        <attr name="normalBackgroundColor" format="reference|color" />
+        <attr name="checkedBackgroundColor" format="reference|color" />
+        <attr name="animationDuration" format="integer" />
+        <attr name="isChecked" format="boolean" />
+    </declare-styleable>
+</resources>
