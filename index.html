@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Checkableview by gfranks</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Checkableview</h1>
+        <p>CheckableView - An extraordinary redesign/re-envisioning of the CheckBox</p>
+        <p class="view"><a href="https://github.com/gfranks/CheckableView">View the Project on GitHub <small>gfranks/CheckableView</small></a></p>
+        <ul>
+          <li><a href="https://github.com/gfranks/CheckableView/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/gfranks/CheckableView/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/gfranks/CheckableView">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="checkableview" class="anchor" href="#checkableview" aria-hidden="true"><span class="octicon octicon-link"></span></a>CheckableView</h1>
+
+<p>CheckableView is a redesigned checkbox with more interactive components that make it extraordinary. Custom animation, colors, customization, make this a must have component in your arsenal.
+It is highly configurable and works for both phone and tablet. CheckableView is only available for API levels 15+, however, you may fork/clone and modify this. See below for usage and examples.
+If you have any questions, issues, or want to contribute, please submit an issue or Pull Request, or you may contact me.</p>
+
+<h2>
+<a id="what-it-looks-like" class="anchor" href="#what-it-looks-like" aria-hidden="true"><span class="octicon octicon-link"></span></a>What It Looks Like:</h2>
+
+<p>See a short video of this control here:</p>
+
+<h3>
+<a id="screen-shots" class="anchor" href="#screen-shots" aria-hidden="true"><span class="octicon octicon-link"></span></a>Screen Shots</h3>
+
+<h2>
+<a id="how-to-use-it" class="anchor" href="#how-to-use-it" aria-hidden="true"><span class="octicon octicon-link"></span></a>How To Use It:</h2>
+
+<h3>
+<a id="basic-example" class="anchor" href="#basic-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Example</h3>
+
+<div class="highlight highlight-java"><pre>
+<span class="pl-c">// CheckableView Sample.</span>
+<span class="pl-c">// See Sample Module for additional customization as well as multiple examples.</span>
+
+ <span class="pl-k">&lt;</span><span class="pl-stj">com.github.gfranks.checkable.view<span class="pl-k">.</span>CheckableView</span>
+     android<span class="pl-k">:</span>id<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@+id/checkable_view<span class="pl-pds">"</span></span>
+     android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>125dp<span class="pl-pds">"</span></span>
+     android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>100dp<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>checkedImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/checked_image<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>checkedColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/blue<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>normalImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/normal_image<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>normalColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray_light<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>borderColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>borderWidth<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>normalBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>checkedBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/white<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>isChecked<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span></pre></div>
+
+<h2>
+<a id="customization" class="anchor" href="#customization" aria-hidden="true"><span class="octicon octicon-link"></span></a>Customization:</h2>
+
+<ul>
+<li>
+<code>checkedImage</code> Resource Id of the checked image to be set</li>
+<li>
+<code>normalImage</code> Resource Id of the normal image to be set</li>
+<li>
+<code>checkedColor</code> Color used to set the color filter on the checked image view</li>
+<li>
+<code>normalColor</code> Color used to set the color filter on the normal image view</li>
+<li>
+<code>borderColor</code> Color used as the border color of the CheckableView</li>
+<li>
+<code>borderWidth</code> Width of the border of the CheckableView</li>
+<li>
+<code>borderRadius</code> Radius to be used to define the corners of the border of the CheckableView</li>
+<li>
+<code>normalBackgroundColor</code> Color used as the background when the state is unchecked</li>
+<li>
+<code>checkedBackgroundColor</code> Color used as the background when the state is checked</li>
+<li>
+<code>animationDuration</code> Duration used for all animation</li>
+<li>
+<code>isChecked</code> The checked state of the CheckableView</li>
+</ul>
+
+<h2>
+<a id="callback-methods" class="anchor" href="#callback-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Callback Methods:</h2>
+
+<h3>
+<a id="oncheckedchangelistener" class="anchor" href="#oncheckedchangelistener" aria-hidden="true"><span class="octicon octicon-link"></span></a>OnCheckedChangeListener</h3>
+
+<p><code>void onCheckedChanged(CheckableView checkableView, boolean isChecked);</code></p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation:</h2>
+
+<h3>
+<a id="directly-include-source-into-your-projects" class="anchor" href="#directly-include-source-into-your-projects" aria-hidden="true"><span class="octicon octicon-link"></span></a>Directly include source into your projects</h3>
+
+<ul>
+<li>Simply copy the source/resource files from the library folder into your project.</li>
+</ul>
+
+<h3>
+<a id="use-binary-approach" class="anchor" href="#use-binary-approach" aria-hidden="true"><span class="octicon octicon-link"></span></a>Use binary approach</h3>
+
+<ul>
+<li>
+<p>Follow these steps to include aar binary in your project:</p>
+
+<p>1: Copy com.github.gfranks.checkable.view-1.0.aar into your projects libs/ directory.</p>
+
+<p>2: Include the following either in your top level build.gradle file or your module specific one:</p>
+
+<pre><code>  repositories {
+     flatDir {
+         dirs 'libs'
+     }
+ }
+</code></pre>
+
+<p>3: Under your dependencies for your main module's build.gradle file, you can reference that aar file like so:
+<code>compile 'com.github.gfranks.checkable.view:com.github.gfranks.checkable.view-1.0@aar'</code></p>
+</li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p>Copyright (c) 2015 Garrett Franks. All rights reserved.</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.</p>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/gfranks">gfranks</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
