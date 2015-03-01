@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="checked_overlay_size">30dp</dimen>
+    <dimen name="checkable_image_container_margin">18dp</dimen>
+    <dimen name="checkable_overlay_margin">5dp</dimen>
 </resources>

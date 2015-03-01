@@ -42,20 +42,13 @@
                     <com.github.gfranks.checkable.view.CheckableView
                         android:id="@+id/checkable_view"
                         android:layout_width="125dp"
-                        android:layout_height="100dp"
+                        android:layout_height="125dp"
                         android:layout_gravity="center_horizontal"
-                        app:checkedImage="@drawable/ic_task"
-                        app:normalImage="@drawable/ic_task"
-                        app:borderWidth="5"
-                        app:isChecked="true" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:textColor="@color/cv_gray"
-                        android:text="@string/default_checkable_view_style" />
+                        app:cv_checkedImage="@drawable/ic_task"
+                        app:cv_normalImage="@drawable/ic_task"
+                        app:cv_label="@string/default_checkable_view_style"
+                        app:cv_borderWidth="5"
+                        app:cv_isChecked="true" />
 
                 </LinearLayout>
 
@@ -68,20 +61,13 @@
                     <com.github.gfranks.checkable.view.CheckableView
                         android:id="@+id/checkable_view_2"
                         android:layout_width="125dp"
-                        android:layout_height="100dp"
+                        android:layout_height="125dp"
                         android:layout_gravity="center_horizontal"
-                        app:checkedImage="@drawable/ic_manage"
-                        app:checkedColor="@color/theme_blue"
-                        app:normalImage="@drawable/ic_manage"
-                        app:isChecked="false" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:padding="10dp"
-                        android:textColor="@color/cv_gray"
-                        android:text="@string/custom_checkable_view_style" />
+                        app:cv_checkedImage="@drawable/ic_manage"
+                        app:cv_checkedColor="@color/theme_blue"
+                        app:cv_normalImage="@drawable/ic_manage"
+                        app:cv_label="@string/custom_checkable_view_style"
+                        app:cv_isChecked="false" />
 
                 </LinearLayout>
 
@@ -93,81 +79,83 @@
                 android:padding="10dp"
                 android:textColor="@color/cv_gray"
                 android:textStyle="bold"
-                android:text="@string/checkable_group_sample_1" />
+                android:text="@string/checkable_group_sample" />
 
             <com.github.gfranks.checkable.view.CheckableGroup
+                android:id="@+id/checkable_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center">
+                android:orientation="vertical">
 
-                <com.github.gfranks.checkable.view.CheckableView
-                    android:id="@+id/checkable_view_3"
-                    android:layout_width="125dp"
-                    android:layout_height="100dp"
-                    app:checkedImage="@drawable/ic_email"
-                    app:checkedColor="@color/theme_orange"
-                    app:normalImage="@drawable/ic_email"
-                    app:normalColor="@color/theme_white"
-                    app:borderColor="@color/theme_orange"
-                    app:borderWidth="4"
-                    app:normalBackgroundColor="@color/theme_orange"
-                    app:checkmarkColor="@color/theme_orange"
-                    app:isChecked="true" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
-                <com.github.gfranks.checkable.view.CheckableView
-                    android:id="@+id/checkable_view_4"
-                    android:layout_width="125dp"
-                    android:layout_height="100dp"
-                    app:checkedImage="@drawable/ic_call"
-                    app:checkedColor="@color/theme_red"
-                    app:normalImage="@drawable/ic_call"
-                    app:normalColor="@color/theme_white"
-                    app:borderColor="@color/theme_red"
-                    app:borderWidth="6"
-                    app:normalBackgroundColor="@color/theme_red"
-                    app:isChecked="false" />
+                    <com.github.gfranks.checkable.view.CheckableView
+                        android:id="@+id/checkable_view_3"
+                        android:layout_width="125dp"
+                        android:layout_height="100dp"
+                        app:cv_checkedImage="@drawable/ic_email"
+                        app:cv_checkedColor="@color/theme_orange"
+                        app:cv_normalImage="@drawable/ic_email"
+                        app:cv_normalColor="@color/theme_white"
+                        app:cv_borderColor="@color/theme_orange"
+                        app:cv_borderWidth="4"
+                        app:cv_normalBackgroundColor="@color/theme_orange"
+                        app:cv_checkmarkColor="@color/theme_orange"
+                        app:cv_isChecked="true" />
 
-            </com.github.gfranks.checkable.view.CheckableGroup>
+                    <com.github.gfranks.checkable.view.CheckableView
+                        android:id="@+id/checkable_view_4"
+                        android:layout_width="125dp"
+                        android:layout_height="100dp"
+                        app:cv_checkedImage="@drawable/ic_call"
+                        app:cv_checkedColor="@color/theme_red"
+                        app:cv_normalImage="@drawable/ic_call"
+                        app:cv_normalColor="@color/theme_white"
+                        app:cv_borderColor="@color/theme_red"
+                        app:cv_borderWidth="6"
+                        app:cv_normalBackgroundColor="@color/theme_red"
+                        app:cv_isChecked="false" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textColor="@color/cv_gray"
-                android:textStyle="bold"
-                android:text="@string/checkable_group_sample_2" />
+                </LinearLayout>
 
-            <com.github.gfranks.checkable.view.CheckableGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
 
-                <com.github.gfranks.checkable.view.CheckableView
-                    android:id="@+id/checkable_view_5"
-                    android:layout_width="125dp"
-                    android:layout_height="100dp"
-                    app:checkedImage="@drawable/ic_star"
-                    app:checkedColor="@color/theme_magenta"
-                    app:normalImage="@drawable/ic_star"
-                    app:normalColor="@color/theme_white"
-                    app:borderColor="@color/theme_magenta"
-                    app:borderWidth="5"
-                    app:normalBackgroundColor="@color/theme_magenta"
-                    app:isChecked="false" />
+                    <com.github.gfranks.checkable.view.CheckableView
+                        android:id="@+id/checkable_view_5"
+                        android:layout_width="125dp"
+                        android:layout_height="100dp"
+                        app:cv_checkedImage="@drawable/ic_star"
+                        app:cv_checkedColor="@color/theme_magenta"
+                        app:cv_normalImage="@drawable/ic_star"
+                        app:cv_normalColor="@color/theme_white"
+                        app:cv_borderColor="@color/theme_magenta"
+                        app:cv_borderWidth="5"
+                        app:cv_normalBackgroundColor="@color/theme_magenta"
+                        app:cv_isChecked="false" />
 
-                <com.github.gfranks.checkable.view.CheckableView
-                    android:id="@+id/checkable_view_6"
-                    android:layout_width="125dp"
-                    android:layout_height="100dp"
-                    app:checkedImage="@drawable/ic_reminders"
-                    app:checkedColor="@color/theme_blue"
-                    app:normalImage="@drawable/ic_reminders"
-                    app:normalColor="@color/theme_white"
-                    app:borderColor="@color/theme_blue"
-                    app:borderWidth="5"
-                    app:normalBackgroundColor="@color/theme_blue"
-                    app:checkmarkColor="@color/theme_blue"
-                    app:isChecked="true" />
+                    <com.github.gfranks.checkable.view.CheckableView
+                        android:id="@+id/checkable_view_6"
+                        android:layout_width="125dp"
+                        android:layout_height="100dp"
+                        app:cv_checkedImage="@drawable/ic_reminders"
+                        app:cv_checkedColor="@color/theme_blue"
+                        app:cv_normalImage="@drawable/ic_reminders"
+                        app:cv_normalColor="@color/theme_white"
+                        app:cv_borderColor="@color/theme_blue"
+                        app:cv_borderWidth="5"
+                        app:cv_normalBackgroundColor="@color/theme_blue"
+                        app:cv_checkmarkColor="@color/theme_blue"
+                        app:cv_isChecked="false" />
+
+                </LinearLayout>
 
             </com.github.gfranks.checkable.view.CheckableGroup>
 

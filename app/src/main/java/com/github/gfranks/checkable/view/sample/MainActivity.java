@@ -7,9 +7,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.github.gfranks.checkable.view.CheckableGroup;
 import com.github.gfranks.checkable.view.CheckableView;
 
-public class MainActivity extends ActionBarActivity implements CheckableView.OnCheckedChangeListener {
+public class MainActivity extends ActionBarActivity implements CheckableView.OnCheckedChangeListener, CheckableGroup.OnCheckedChangeListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +19,8 @@ public class MainActivity extends ActionBarActivity implements CheckableView.OnC
         setSupportActionBar((Toolbar) findViewById(R.id.activity_toolbar));
         ((CheckableView) findViewById(R.id.checkable_view)).setOnCheckedChangeListener(this);
         ((CheckableView) findViewById(R.id.checkable_view_2)).setOnCheckedChangeListener(this);
-        ((CheckableView) findViewById(R.id.checkable_view_3)).setOnCheckedChangeListener(this);
-        ((CheckableView) findViewById(R.id.checkable_view_4)).setOnCheckedChangeListener(this);
-        ((CheckableView) findViewById(R.id.checkable_view_5)).setOnCheckedChangeListener(this);
-        ((CheckableView) findViewById(R.id.checkable_view_6)).setOnCheckedChangeListener(this);
+
+        ((CheckableGroup) findViewById(R.id.checkable_group)).setOnCheckedChangeListener(this);
     }
 
     @Override
@@ -40,5 +39,11 @@ public class MainActivity extends ActionBarActivity implements CheckableView.OnC
     @Override
     public void onCheckedChanged(CheckableView checkableView, boolean isChecked) {
         Log.v(checkableView.getClass().getName(), "CheckableView at (" + checkableView.getId() + ") is checked: " + isChecked);
+    }
+
+    @Override
+    public void onCheckedChanged(CheckableGroup checkableGroup, CheckableView checkableView, boolean isChecked) {
+        Log.v(checkableView.getClass().getName(), "CheckableView at (" + checkableView.getId() + ") in group (" +
+                checkableGroup.getId() + ") is checked: " + isChecked);
     }
 }

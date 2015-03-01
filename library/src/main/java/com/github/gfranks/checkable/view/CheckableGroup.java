@@ -7,6 +7,7 @@ import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -19,9 +20,9 @@ public class CheckableGroup extends LinearLayout implements CheckableView.OnChec
      */
     private int mLastCheckedPosition;
     /**
-     * Listener to receive onCheckedChange callbacks when a child CheckableView's state changes
+     * Listener to receive onCheckedChange callbacks when a child CheckableView's checked state changes
      */
-    private CheckableView.OnCheckedChangeListener mOnCheckedChangeListener;
+    private OnCheckedChangeListener mOnCheckedChangeListener;
     /**
      * List of all the added CheckableViews
      */
@@ -43,9 +44,9 @@ public class CheckableGroup extends LinearLayout implements CheckableView.OnChec
 
     /**
      *
-     * @param onCheckedChangeListener Listener to receive onCheckedChange callbacks when a child CheckableView's state changes
+     * @param onCheckedChangeListener Listener to receive onCheckedChange callbacks when a child CheckableView's checked state changes
      */
-    public void setOnCheckedChangeListener(CheckableView.OnCheckedChangeListener onCheckedChangeListener) {
+    public void setOnCheckedChangeListener(OnCheckedChangeListener onCheckedChangeListener) {
         mOnCheckedChangeListener = onCheckedChangeListener;
     }
 
@@ -95,7 +96,7 @@ public class CheckableGroup extends LinearLayout implements CheckableView.OnChec
     @Override
     public void onCheckedChanged(CheckableView checkableView, boolean isChecked) {
         if (mOnCheckedChangeListener != null) {
-            mOnCheckedChangeListener.onCheckedChanged(checkableView, isChecked);
+            mOnCheckedChangeListener.onCheckedChanged(this, checkableView, isChecked);
         }
 
         if (isChecked) {
@@ -106,22 +107,49 @@ public class CheckableGroup extends LinearLayout implements CheckableView.OnChec
 
     @Override
     protected boolean drawChild(@NonNull Canvas canvas, @NonNull View child, long drawingTime) {
-        if (!(child instanceof CheckableView)) {
-            throw new IllegalStateException("CheckableGroup only allows children of type CheckableView");
-        }
+        CheckableView checkableView;
+        if (child instanceof CheckableView) {
+            checkableView = (CheckableView) child;
 
-        CheckableView checkableView = (CheckableView) child;
-        if (!mCheckableViews.contains(checkableView)) {
-            mCheckableViews.add(checkableView);
-        }
-        checkableView.setOnCheckedChangeListener(this);
+            if (!mCheckableViews.contains(checkableView)) {
+                mCheckableViews.add(checkableView);
+            }
+            checkableView.setOnCheckedChangeListener(this);
 
-        if (checkableView.isChecked()) {
-            mLastCheckedPosition = mCheckableViews.indexOf(checkableView);
-            updateCheckedPosition();
+            if (checkableView.isChecked()) {
+                mLastCheckedPosition = mCheckableViews.indexOf(checkableView);
+                updateCheckedPosition();
+            }
+        } else {
+            if (child instanceof ViewGroup) {
+                addAllCheckableViewsFromGroup((ViewGroup) child);
+            }
         }
 
         return super.drawChild(canvas, child, drawingTime);
+    }
+
+    private void addAllCheckableViewsFromGroup(ViewGroup root) {
+        final int childCount = root.getChildCount();
+        CheckableView checkableView;
+        for (int i = 0; i < childCount; i++) {
+            final View child = root.getChildAt(i);
+            if (child instanceof ViewGroup) {
+                addAllCheckableViewsFromGroup((ViewGroup) child);
+            }
+
+            if (child instanceof CheckableView) {
+                checkableView = (CheckableView) child;
+                if (!mCheckableViews.contains(checkableView)) {
+                    mCheckableViews.add(checkableView);
+                }
+                checkableView.setOnCheckedChangeListener(this);
+                if (checkableView.isChecked()) {
+                    mLastCheckedPosition = mCheckableViews.indexOf(checkableView);
+                    updateCheckedPosition();
+                }
+            }
+        }
     }
 
     private void updateCheckedPosition() {
@@ -164,5 +192,16 @@ public class CheckableGroup extends LinearLayout implements CheckableView.OnChec
             super.writeToParcel(out, flags);
             out.writeInt(mLastCheckedPosition);
         }
+    }
+
+    public static interface OnCheckedChangeListener {
+        /**
+         * Called when the checked state of a CheckableView has changed.
+         *
+         * @param checkableGroup The CheckableGroup which the CheckableView belongs to
+         * @param checkableView The CheckableView view whose state has changed.
+         * @param isChecked  The new checked state of CheckableView.
+         */
+        void onCheckedChanged(CheckableGroup checkableGroup, CheckableView checkableView, boolean isChecked);
     }
 }
