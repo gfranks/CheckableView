@@ -59,21 +59,24 @@ If you have any questions, issues, or want to contribute, please submit an issue
      android<span class="pl-k">:</span>id<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@+id/checkable_view<span class="pl-pds">"</span></span>
      android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>125dp<span class="pl-pds">"</span></span>
      android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>100dp<span class="pl-pds">"</span></span>
-     app<span class="pl-k">:</span>checkedImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/checked_image<span class="pl-pds">"</span></span>
-     app<span class="pl-k">:</span>checkedColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/blue<span class="pl-pds">"</span></span>
-     app<span class="pl-k">:</span>normalImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/normal_image<span class="pl-pds">"</span></span>
-     app<span class="pl-k">:</span>normalColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray_light<span class="pl-pds">"</span></span>
-     app<span class="pl-k">:</span>borderColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
-     app<span class="pl-k">:</span>borderWidth<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>
-     app<span class="pl-k">:</span>normalBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
-     app<span class="pl-k">:</span>checkedBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/white<span class="pl-pds">"</span></span>
-     app<span class="pl-k">:</span>isChecked<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span></pre></div>
+     app<span class="pl-k">:</span>cv_checkedImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/checked_image<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>cv_checkedColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/blue<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>cv_normalImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/normal_image<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>cv_normalColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray_light<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>cv_borderColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>cv_borderWidth<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>cv_normalBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>cv_checkedBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/white<span class="pl-pds">"</span></span>
+     app<span class="pl-k">:</span>cv_isChecked<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span></pre></div>
 
 <h3>
 <a id="basic-checkablegroup-example" class="anchor" href="#basic-checkablegroup-example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic CheckableGroup Example</h3>
 
-<p>Want to have a group of CheckableViews? Use a CheckableGroup! CheckableGroup allows only a single CheckableView to be checked and will handle the states of the other CheckableViews
-NOTE: CheckableGroup has it's own OnCheckedChangeListener you may set to receive checked state changes for it's CheckableViews</p>
+<p>Want to have a group of CheckableViews? Use a CheckableGroup! CheckableGroup is a LinearLayout and defaults to HORIZONTAL Orientation and allows only a single
+CheckableView to be checked and will handle the states of the other CheckableViews. This layout, will take any type of children and will find the CheckableViews
+residing in this layout. No need to worry about handling anything yourself.</p>
+
+<p>NOTE: CheckableGroup has it's own OnCheckedChangeListener you may set to receive checked state changes for it's CheckableViews</p>
 
 <div class="highlight highlight-java"><pre>
 <span class="pl-c">// To retrieve the current checked CheckableView or it's position, you may call</span>
@@ -87,28 +90,28 @@ NOTE: CheckableGroup has it's own OnCheckedChangeListener you may set to receive
           android<span class="pl-k">:</span>id<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@+id/checkable_view_1<span class="pl-pds">"</span></span>
           android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>125dp<span class="pl-pds">"</span></span>
           android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>100dp<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>checkedImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/checked_image<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>checkedColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/blue<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>normalImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/normal_image<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>normalColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray_light<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>borderColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>borderWidth<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>normalBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>checkedBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/white<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>isChecked<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+          app<span class="pl-k">:</span>cv_checkedImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/checked_image<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_checkedColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/blue<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_normalImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/normal_image<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_normalColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray_light<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_borderColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_borderWidth<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_normalBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_checkedBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/white<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_isChecked<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>true<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span>
 
      <span class="pl-k">&lt;</span><span class="pl-stj">com.github.gfranks.checkable.view<span class="pl-k">.</span>CheckableView</span>
           android<span class="pl-k">:</span>id<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@+id/checkable_view_2<span class="pl-pds">"</span></span>
           android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>125dp<span class="pl-pds">"</span></span>
           android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>100dp<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>checkedImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/checked_image<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>checkedColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/blue<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>normalImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/normal_image<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>normalColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray_light<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>borderColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>borderWidth<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>normalBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
-          app<span class="pl-k">:</span>checkedBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/white<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span>
+          app<span class="pl-k">:</span>cv_checkedImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/checked_image<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_checkedColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/blue<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_normalImage<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@drawable/normal_image<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_normalColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray_light<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_borderColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_borderWidth<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>3<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_normalBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/gray<span class="pl-pds">"</span></span>
+          app<span class="pl-k">:</span>cv_checkedBackgroundColor<span class="pl-k">=</span><span class="pl-s1"><span class="pl-pds">"</span>@color/white<span class="pl-pds">"</span></span> <span class="pl-k">/</span><span class="pl-k">&gt;</span>
 
  <span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-stj">com.github.gfranks.checkable.view<span class="pl-k">.</span>CheckableGroup</span><span class="pl-k">&gt;</span></pre></div>
 
@@ -117,29 +120,35 @@ NOTE: CheckableGroup has it's own OnCheckedChangeListener you may set to receive
 
 <ul>
 <li>
-<code>checkedImage</code> Resource Id of the checked image to be set</li>
+<code>cv_checkedImage</code> Resource Id of the checked image to be set</li>
 <li>
-<code>normalImage</code> Resource Id of the normal image to be set</li>
+<code>cv_normalImage</code> Resource Id of the normal image to be set</li>
 <li>
-<code>checkedColor</code> Color used to set the color filter on the checked image view</li>
+<code>cv_checkedColor</code> Color used to set the color filter on the checked image view</li>
 <li>
-<code>normalColor</code> Color used to set the color filter on the normal image view</li>
+<code>cv_normalColor</code> Color used to set the color filter on the normal image view</li>
 <li>
-<code>borderColor</code> Color used as the border color of the CheckableView</li>
+<code>cv_label</code> String used as the CheckableViews label (Optional)</li>
 <li>
-<code>borderWidth</code> Width of the border of the CheckableView</li>
+<code>cv_labelTextColor</code> Color used as the label text color of the CheckableView (Optional)</li>
 <li>
-<code>borderRadius</code> Radius to be used to define the corners of the border of the CheckableView</li>
+<code>cv_borderColor</code> Color used as the border color of the CheckableView</li>
 <li>
-<code>normalBackgroundColor</code> Color used as the background when the state is unchecked</li>
+<code>cv_borderWidth</code> Width of the border of the CheckableView</li>
 <li>
-<code>checkedBackgroundColor</code> Color used as the background when the state is checked</li>
+<code>cv_borderRadius</code> Radius to be used to define the corners of the border of the CheckableView</li>
 <li>
-<code>animationDuration</code> Duration used for all animation</li>
+<code>cv_normalBackgroundColor</code> Color used as the background when the state is unchecked</li>
 <li>
-<code>checkmarkColor</code> Color of the checkmark used in the checked overlay</li>
+<code>cv_checkedBackgroundColor</code> Color used as the background when the state is checked</li>
 <li>
-<code>isChecked</code> The checked state of the CheckableView</li>
+<code>cv_animationDuration</code> Duration used for all animation</li>
+<li>
+<code>cv_checkmarkColor</code> Color of the checkmark used in the checked overlay</li>
+<li>
+<code>cv_checkmarkPosition</code> Enum (CheckPosition) to determine where the checkmark is to be drawn (Defaults to topRight)</li>
+<li>
+<code>cv_isChecked</code> The checked state of the CheckableView</li>
 </ul>
 
 <h2>
@@ -167,7 +176,7 @@ NOTE: CheckableGroup has it's own OnCheckedChangeListener you may set to receive
 <li>
 <p>Follow these steps to include aar binary in your project:</p>
 
-<p>1: Copy com.github.gfranks.checkable.view-1.0.aar into your projects libs/ directory.</p>
+<p>1: Copy com.github.gfranks.checkable.view-1.1.aar into your projects libs/ directory.</p>
 
 <p>2: Include the following either in your top level build.gradle file or your module specific one:</p>
 
@@ -179,7 +188,7 @@ NOTE: CheckableGroup has it's own OnCheckedChangeListener you may set to receive
 </code></pre>
 
 <p>3: Under your dependencies for your main module's build.gradle file, you can reference that aar file like so:
-<code>compile 'com.github.gfranks.checkable.view:com.github.gfranks.checkable.view-1.0@aar'</code></p>
+<code>compile 'com.github.gfranks.checkable.view:com.github.gfranks.checkable.view-1.1@aar'</code></p>
 </li>
 </ul>
 
